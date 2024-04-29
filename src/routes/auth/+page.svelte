@@ -154,10 +154,10 @@
 							{/if}
 
 							<div class="mb-2">
-								<div class=" text-sm font-semibold text-left mb-1">{$i18n.t('Email')}</div>
+								<div class=" text-sm font-semibold text-left mb-1">{$i18n.t('U-account')}</div>
 								<input
 									bind:value={email}
-									type="email"
+									type="text"
 									class=" border px-4 py-2.5 rounded-2xl w-full text-sm"
 									autocomplete="email"
 									placeholder={$i18n.t('Enter Your Email')}

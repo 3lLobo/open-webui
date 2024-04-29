@@ -576,3 +576,21 @@ LITELLM_PROXY_HOST = os.getenv("LITELLM_PROXY_HOST", "127.0.0.1")
 ####################################
 
 DATABASE_URL = os.environ.get("DATABASE_URL", f"sqlite:///{DATA_DIR}/webui.db")
+
+
+####################################
+# LDAP
+####################################
+from nldcsc.generic.utils import getenv_bool, getenv_list
+
+
+LDAP_ENABLE = getenv_bool("LDAP_ENABLE", "True")
+LDAP_URL = os.getenv("LDAP_URL", "http://localhost:1389")
+LDAP_USER_BASE = os.getenv(
+    "LDAP_USER_BASE", "cn=users,ou=accounts,dc=something,dc=something"
+)
+# Users in Admin groups are automatically added to admin users.
+LDAP_IPA_ADMIN_GROUPS = getenv_list("LDAP_IPA_ADMIN_GROUPS", [])
+LDAP_IPA_SUPERUSER_GROUPS = getenv_list("LDAP_IPA_SUPERUSER_GROUPS", [])
+LDAP_IPA_GROUPS = getenv_list("LDAP_IPA_GROUPS", [])
+LDAP_CACERTFILE = os.getenv("LDAP_CACERTFILE", None)

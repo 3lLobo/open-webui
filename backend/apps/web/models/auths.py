@@ -5,6 +5,7 @@ import uuid
 import logging
 from peewee import *
 
+from apps.web.models.ldap_login import do_login
 from apps.web.models.users import UserModel, Users
 from utils.utils import verify_password
 
@@ -123,7 +124,9 @@ class AuthsTable:
         try:
             auth = Auth.get(Auth.email == email, Auth.active == True)
             if auth:
-                if verify_password(password, auth.password):
+                # if verify_password(password, auth.password):
+                success, username = do_login(email, password)
+                if success:
                     user = Users.get_user_by_id(auth.id)
                     return user
                 else:
@@ -156,13 +159,13 @@ class AuthsTable:
             return None
 
     def update_user_password_by_id(self, id: str, new_password: str) -> bool:
-        try:
-            query = Auth.update(password=new_password).where(Auth.id == id)
-            result = query.execute()
+        # try:
+        #     query = Auth.update(password=new_password).where(Auth.id == id)
+        #     result = query.execute()
 
-            return True if result == 1 else False
-        except:
-            return False
+        #     return True if result == 1 else False
+        # except:
+        return False
 
     def update_email_by_id(self, id: str, email: str) -> bool:
         try:

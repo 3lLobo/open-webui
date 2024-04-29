@@ -38,8 +38,9 @@ def calculate_sha256_string(string):
 
 
 def validate_email_format(email: str) -> bool:
-    if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
-        return False
+    # TODO: validate u-account?
+    # if not re.match(r"[^@]+@[^@]+\.[^@]+", email):
+    #     return False
     return True
 
 

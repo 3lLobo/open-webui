@@ -1,3 +1,6 @@
+*.ipynb
+.venv
+
 .DS_Store
 node_modules
 /build

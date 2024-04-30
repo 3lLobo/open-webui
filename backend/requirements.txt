@@ -57,3 +57,6 @@ pyjwt[crypto]
 
 black
 langfuse
+
+# LDAP
+nldcsc[auth,loggers]
